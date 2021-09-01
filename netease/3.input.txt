@@ -1,0 +1,9 @@
+7
+username = netease
+password = 12345
+ip = 127.0.0.1
+port = 7050
+
+#database
+connect = https://{ip}:{port}/db?username={username}&password={password}
+connect
