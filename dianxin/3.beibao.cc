@@ -1,7 +1,7 @@
 /*
  * @Date: 2021-10-09 20:53:07
  * @LastEditors: LIULIJING
- * @LastEditTime: 2021-10-09 21:09:04
+ * @LastEditTime: 2021-10-11 21:10:53
  */
 
 
@@ -54,4 +54,28 @@ int main() {
     cout<<res<<endl;
 
     return 0;
+}
+
+
+// 
+int knapsack(vector<int> weights, vector<int> values, int N, int W) {
+vector<int> dp(W + 1, 0);
+for (int i = 1; i <= N; ++i) {
+int w = weights[i-1], v = values[i-1];
+for (int j = w; j <= W; ++j) {
+dp[j] = max(dp[j], dp[j-w] + v);
+}
+}
+return dp[W];
+}
+
+int knapsack_pre(vector<int> weights, vector<int> values, int N, int W) {
+vector<int> dp(W + 1, 0);
+for (int i = 1; i <= N; ++i) {
+int w = weights[i-1], v = values[i-1];
+for (int j = W; j >= w; --j) {
+dp[j] = max(dp[j], dp[j-w] + v);
+}
+}
+return dp[W];
 }
